@@ -4,6 +4,18 @@ from xml.etree  import ElementTree
 
 app = Flask(__name__)
 
+# Debug logging
+import logging
+import sys
+# Defaults to stdout
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+try: 
+    log.info('Start reading database')
+except:
+    _, ex, _ = sys.exc_info()
+    log.error(ex.message)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -18,9 +30,15 @@ def show_article():
     article.download()
     article.parse()
 
-    html_string = ElementTree.tostring(article.clean_top_node)
+    try:
+      html_string = ElementTree.tostring(article.clean_top_node)
+    except:
+      html_string = "Error converting html to string."
 
-    article.nlp()
+    try:
+      article.nlp()
+    except:
+      log.error("Couldn't process with NLP")
 
     a = {
           'html': html_string, 
