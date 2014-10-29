@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="container article-page">
+    <div class="table-responsive">
+      <h3>Extracted Data</h3>
+      <p>{{ url }}</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Title</td>
+            <td>{{ article.title }}</td>
+          </tr>
+          <tr>
+            <td>Authors</td>
+            <td>{{ article.authors }}</td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td>{{ article.text }}</td>
+          </tr>
+          <tr>
+            <td>Top Image</td>
+            <td>
+              <img src="{{ article.top_image }}"/>
+              <p class="text-center"><a href="{{ article.top_image }}">{{ article.top_image }}</a></p>
+            </td>
+          </tr>
+          <tr>
+            <td>Movies (Videos)</td>
+            <td>{{ article.videos }}</td>
+          </tr>
+          <tr>
+            <td>Keywords (NLP)</td>
+            <td>{{ article.keywords }}</td>
+          </tr>
+          <tr>
+            <td>Summary (NLP)</td>
+            <td>{{ article.summary }}</td>
+          </tr>
+          <tr>
+            <td>Article HTML</td>
+            <td>
+              <pre>
+                <code class="language-markup">
+                  {{ article.html }}
+                </code>
+              </pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

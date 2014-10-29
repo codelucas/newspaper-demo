@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="container landing-page">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Newspaper Demo</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="{{ url_for('show_article') }}" method=get>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input class="form-control input-lg" type="url" name="url_to_clean" placeholder="Paste the URL of an article">
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <button class="btn btn-success btn-lg">Extract</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  <div>
+{% endblock %}
