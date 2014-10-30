@@ -4,18 +4,6 @@ from xml.etree  import ElementTree
 
 app = Flask(__name__)
 
-# Debug logging
-import logging
-import sys
-# Defaults to stdout
-logging.basicConfig(level=logging.INFO)
-log = logging.getLogger(__name__)
-try: 
-    log.info('Start reading database')
-except:
-    _, ex, _ = sys.exc_info()
-    log.error(ex.message)
-
 @app.route('/')
 def index():
     return render_template('index.html')
